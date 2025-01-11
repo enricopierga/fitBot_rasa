@@ -1,0 +1,114 @@
+version: "3.1"
+rules:
+  # Regole per il saluto
+  - rule: Rispondi al saluto
+    steps:
+      - intent: greet
+      - action: utter_greet
+
+  # Regole per piani di allenamento
+  - rule: Richiesta piano di allenamento generico
+    steps:
+      - intent: request_workout_plan
+      - action: utter_workout_plan
+
+  # Regole per piani alimentari
+  - rule: Richiesta piano alimentare
+    steps:
+      - intent: request_diet_plan
+      - action: utter_diet_plan
+
+  # Regole per diete specifiche
+  - rule: Richiesta dieta vegana
+    steps:
+      - intent: RichiestaDietaVegana
+      - action: utter_dieta_vegana
+
+  - rule: Richiesta dieta keto
+    steps:
+      - intent: RichiestaDietaKeto
+      - action: utter_dieta_keto
+
+  # Regole per schede di allenamento
+  - rule: Richiesta scheda allenamento schiena
+    steps:
+      - intent: RichiestaSchedaAllenamentoSchiena
+      - action: utter_scheda_schiena
+
+  - rule: Richiesta scheda allenamento gambe
+    steps:
+      - intent: RichiestaSchedaAllenamentoGambe
+      - action: utter_scheda_gambe
+
+  - rule: Richiesta scheda allenamento petto
+    steps:
+      - intent: RichiestaSchedaAllenamentoPetto
+      - action: utter_scheda_petto
+
+  - rule: Richiesta scheda allenamento braccia
+    steps:
+      - intent: RichiestaSchedaAllenamentoBraccia
+      - action: utter_scheda_braccia
+
+  - rule: Richiesta scheda allenamento addominali
+    steps:
+      - intent: RichiestaSchedaAllenamentoAddominali
+      - action: utter_scheda_addominali
+
+  - rule: Richiesta scheda allenamento spalle
+    steps:
+      - intent: RichiestaSchedaAllenamentoSpalle
+      - action: utter_scheda_spalle
+
+  # Regole per esercizi specifici
+  - rule: Richiesta esercizio defaticante
+    steps:
+      - intent: RichiestaEsercizioDefaticante
+      - action: utter_richiesta_esercizio_defaticante
+
+  - rule: Richiesta esercizio braccia
+    steps:
+      - intent: RichiestaEsercizioBraccia
+      - action: utter_richiesta_esercizio_braccia
+
+  - rule: Richiesta esercizio gambe
+    steps:
+      - intent: RichiestaEsercizioGambe
+      - action: utter_richiesta_esercizio_gambe
+
+  - rule: Richiesta esercizio petto
+    steps:
+      - intent: RichiestaEsercizioPetto
+      - action: utter_richiesta_esercizio_petto
+
+  - rule: Richiesta esercizio schiena
+    steps:
+      - intent: RichiestaEsercizioSchiena
+      - action: utter_richiesta_esercizio_schiena
+
+  # Regole per il saluto finale
+  - rule: Rispondi al saluto di addio
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
+
+  #Form Rules
+  - rule: Attiva il form per raccogliere informazioni sull'utente
+    steps:
+      - intent: request_personalized_workout
+      - action: fitness_form
+      - active_loop: fitness_form
+
+  - rule: Completa il form e fornisce esercizi
+    condition:
+      - active_loop: fitness_form
+    steps:
+      - action: fitness_form
+      - active_loop: null #disattiva il form
+      - action: action_create_personalized_workout
+      - action: utter_ask_more_details
+
+  - rule: Fornisci dettagli dopo richiesta
+    steps:
+      - intent: affirm
+      - action: action_provide_exercises

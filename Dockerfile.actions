@@ -1,0 +1,14 @@
+# Dockerfile for Rasa Actions
+FROM rasa/rasa-sdk:latest
+
+# Set working directory
+WORKDIR /app/actions
+
+# Copy actions files
+COPY ./actions /app/actions
+
+# Expose port for action server
+EXPOSE 5055
+
+# Start action server
+CMD ["start", "--actions", "actions"]

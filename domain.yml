@@ -1,0 +1,100 @@
+version: "3.1" # Versione del formato del file di dominio
+
+# Definizione degli intenti che il bot può riconoscere
+intents:
+  - greet # Intento per il saluto
+  - request_workout_plan # Intento per richiedere un piano di allenamento
+  - request_diet_plan # Intento per richiedere un piano alimentare
+  - RichiestaDietaVegana # Intento per richiedere una dieta vegana
+  - RichiestaDietaKeto # Intento per richiedere una dieta keto
+  - RichiestaSchedaAllenamentoSchiena # Intento per richiedere una scheda di allenamento per la schiena
+  - RichiestaAllenamentoDefaticante # Intento per richiedere un allenamento defaticante
+  - RichiestaSchedaAllenamentoGambe # Intento per richiedere una scheda di allenamento per le gambe
+  - RichiestaSchedaAllenamentoPetto # Intento per richiedere una scheda di allenamento per il petto
+  - RichiestaSchedaAllenamentoBraccia # Intento per richiedere una scheda di allenamento per le braccia
+  - RichiestaSchedaAllenamentoAddominali # Intento per richiedere una scheda di allenamento per gli addominali
+  - RichiestaSchedaAllenamentoSpalle # Intento per richiedere una scheda di allenamento per le spalle
+  - RichiestaEsercizioBraccia # Intento per richiedere esercizi per le braccia
+  - RichiestaEsercizioGambe # Intento per richiedere esercizi per le gambe
+  - RichiestaEsercizioSchiena # Intento per richiedere esercizi per la schiena
+  - RichiestaEsercizioDefaticante # Intento per richiedere esercizi defaticanti
+  - RichiestaEsercizioPetto # Intento per richiedere esercizi per il petto
+  - goodbye # Intento per il saluto finale
+  - request_personalized_workout
+  - request_exercises
+  - affirm
+  - deny
+
+responses:
+  utter_greet:
+    - text: |
+        👋 Benvenuto! Ecco cosa puoi fare con FitBot, il tuo assistente per il fitness:
+
+        🏋️ Piani di allenamento  
+        1️⃣ Richiedi un piano settimanale: Es. "Dammi un piano di allenamento settimanale"  
+        2️⃣ Ottieni schede personalizzate: Es. "Dammi una scheda per le gambe"  
+        3️⃣ Chiedi un allenamento defaticante: Es. "Hai un esercizio per rilassare i muscoli?"  
+
+        🍎 Piani alimentari e diete  
+        4️⃣ Richiedi un piano alimentare settimanale: Es. "Ho bisogno di una dieta sana"  
+        5️⃣ Scopri diete specifiche: Es. "Fammi un esempio di dieta keto"  
+
+        💪 Esercizi specifici  
+        6️⃣ Trova esercizi mirati: Es. "Dammi un esercizio per il petto"  
+        7️⃣ Suggerimenti per defaticare: Es. "Hai esercizi per rilassare la schiena?"  
+
+        ❓ Assistenza e supporto  
+        🔄 Chiedi aiuto: Es. "Come funziona questo bot?"  
+        🤔 Saluta o termina la conversazione: Es. "Ciao" o "Arrivederci"  
+
+        🎯 Prova ora! Quale obiettivo vuoi raggiungere oggi?
+
+  utter_workout_plan:
+    - text: "Ecco un piano di allenamento settimanale: Lunedì - Petto e tricipiti, Martedì - Schiena e bicipiti, Mercoledì - Gambe, Giovedì - Spalle, Venerdì - Addominali e cardio, Sabato - Riposo, Domenica - Allenamento totale."
+
+  utter_diet_plan:
+    - text: "Ecco una dieta settimanale bilanciata: Colazione - avena con frutta, Pranzo - pollo alla griglia con insalata, Cena - pesce con verdure al vapore, Snack - frutta secca e yogurt."
+
+  # ...
+
+# Slot
+slots:
+  fitness_goal:
+    type: text
+    mappings:
+      - type: from_text
+        conditions:
+          - active_loop: fitness_form
+            requested_slot: fitness_goal
+  experience_level:
+    type: text
+    mappings:
+      - type: from_text
+        conditions:
+          - active_loop: fitness_form
+            requested_slot: experience_level
+  availability:
+    type: text
+    mappings:
+      - type: from_text
+        conditions:
+          - active_loop: fitness_form
+            requested_slot: availability
+
+forms:
+  fitness_form:
+    required_slots:
+      - fitness_goal
+      - experience_level
+      - availability
+
+# Azioni
+actions:
+  - utter_greet
+  - utter_workout_plan
+  - utter_diet_plan
+  - validate_fitness_form
+  - action_create_personalized_workout
+
+session_config:
+  session_expiration_time: 60

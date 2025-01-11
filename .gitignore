@@ -1,0 +1,4 @@
+.rasa/cache
+actions/__pycache__/__init__.cpython-38.pyc
+actions/__pycache__/actions.cpython-38.pyc
+actions/__init__.py

@@ -1,0 +1,7 @@
+conda init bash
+
+conda activate Rasa_es
+
+rasa data validate
+
+#Terminale azioni: rasa run actions
