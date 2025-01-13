@@ -262,3 +262,4 @@ class ActionProvideExercises(Action):
         # Invia gli esercizi al bot
         dispatcher.utter_message(text=f"Ecco alcuni esercizi per te:\n{exercises}")
         return []
+    

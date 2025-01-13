@@ -1,5 +1,8 @@
 .rasa
 actions/__pycache__/__init__.cpython-38.pyc
 actions/__pycache__/actions.cpython-38.pyc
+actions/__pycache__
 actions/__init__.py
+story_graph.dot
 models
+Rasa/actions/__pycache__/actions.cpython-38.pyc

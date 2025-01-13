@@ -1,5 +1,10 @@
 version: "3.1"
 rules:
+  - rule: Azione di fallback
+    steps:
+      - intent: nlu_fallback
+      - action: utter_default
+
   # Regole per il saluto
   - rule: Rispondi al saluto
     steps:

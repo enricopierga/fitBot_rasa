@@ -120,6 +120,9 @@ responses:
   utter_ask_more_details:
     - text: "Hai bisogno di maggiori dettagli?"
 
+  utter_default:
+    - text: "Mi dispiace, non ho capito la tua richiesta. Puoi riformularla o chiedermi qualcosa di diverso? 😊"
+
   # Saluto finale
   utter_goodbye:
     - text: "Grazie per avermi usato! A presto e buon allenamento! 💪 Ricorda di bere molta acqua e di riposare adeguatamente."
@@ -166,6 +169,7 @@ actions:
   - utter_dieta_keto
   - utter_scheda_schiena
   - action_provide_exercises
+  - action_default_fallback
 
 session_config:
   session_expiration_time: 60

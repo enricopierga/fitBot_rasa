@@ -9,9 +9,6 @@ nlu:
       - Ciao!
       - Ciao Fitbot!
       - Hey Fitbot
-      - help
-      - aiuto
-      - info
 
   - intent: start
     examples: |
