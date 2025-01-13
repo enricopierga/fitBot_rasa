@@ -12,15 +12,14 @@ nlu:
       - help
       - aiuto
       - info
-      
-  
+
   - intent: start
     examples: |
       - /start
       - /starc
       - Start
       - /stArt
-      - 
+      - start
 
   # Intenti allenamento e dieta generico
   - intent: request_workout_plan

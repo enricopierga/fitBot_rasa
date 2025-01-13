@@ -21,9 +21,10 @@ intents:
   - RichiestaEsercizioPetto # Intento per richiedere esercizi per il petto
   - goodbye # Intento per il saluto finale
   - request_personalized_workout
-  - request_exercises
   - affirm
   - deny
+  - start
+  - request-exercises
 
 responses:
   utter_greet:
@@ -48,14 +49,80 @@ responses:
         🤔 Saluta o termina la conversazione: Es. "Ciao" o "Arrivederci"  
 
         🎯 Prova ora! Quale obiettivo vuoi raggiungere oggi?
-
   utter_workout_plan:
-    - text: "Ecco un piano di allenamento settimanale: Lunedì - Petto e tricipiti, Martedì - Schiena e bicipiti, Mercoledì - Gambe, Giovedì - Spalle, Venerdì - Addominali e cardio, Sabato - Riposo, Domenica - Allenamento totale."
+    - text: "Ecco un piano di allenamento settimanale: Lunedì - Petto e tricipiti, Martedì - Schiena e bicipiti, Mercoledì - Gambe, Giovedì - Spalle, Venerdì - Addominali e cardio, Sabato - Riposo, Domenica - Allenamento totale." # Risposta per il piano di allenamento
 
   utter_diet_plan:
-    - text: "Ecco una dieta settimanale bilanciata: Colazione - avena con frutta, Pranzo - pollo alla griglia con insalata, Cena - pesce con verdure al vapore, Snack - frutta secca e yogurt."
+    - text: "Ecco una dieta settimanale bilanciata: Colazione - avena con frutta, Pranzo - pollo alla griglia con insalata, Cena - pesce con verdure al vapore, Snack - frutta secca e yogurt." # Risposta per il piano alimentare
 
-  # ...
+  utter_dieta_perdita_peso:
+    - text: "Ecco un esempio di dieta per perdere peso: Colazione - smoothie verde (250 kcal, 30g carboidrati, 10g proteine, 5g grassi), Pranzo - insalata di quinoa con verdure (400 kcal, 50g carboidrati, 20g proteine, 15g grassi), Cena - petto di pollo alla griglia con broccoli (350 kcal, 10g carboidrati, 40g proteine, 15g grassi), Snack - carote e hummus (150 kcal, 20g carboidrati, 5g proteine, 7g grassi)." # Risposta per la dieta per perdita di peso
+
+  utter_dieta_aumento_massa:
+    - text: "Ecco un esempio di dieta per aumentare la massa muscolare: Colazione - omelette con 3 uova e spinaci (400 kcal, 5g carboidrati, 30g proteine, 30g grassi), Pranzo - riso integrale con pollo e avocado (600 kcal, 70g carboidrati, 40g proteine, 20g grassi), Cena - salmone con patate dolci (500 kcal, 50g carboidrati, 35g proteine, 25g grassi)." # Risposta per la dieta per aumento di massa
+
+  utter_dieta_equilibrata:
+    - text: "Ecco un esempio di dieta equilibrata: Colazione - yogurt con frutta, Pranzo - insalata mista, Cena - pesce con verdure." # Risposta per la dieta equilibrata
+
+  utter_dieta_vegana:
+    - text: "Ecco un esempio di dieta vegana: Colazione - smoothie di banana e spinaci (250 kcal, 40g carboidrati, 5g proteine, 5g grassi), Pranzo - burger di lenticchie con insalata (500 kcal, 60g carboidrati, 25g proteine, 15g grassi), Cena - curry di ceci con riso basmati (600 kcal, 80g carboidrati, 20g proteine, 15g grassi)." # Risposta per la dieta vegana
+
+  utter_dieta_energia:
+    - text: "Ecco un esempio di dieta per migliorare l'energia: Colazione - toast integrale con avocado (300 kcal, 30g carboidrati, 10g proteine, 15g grassi), Pranzo - insalata di pollo e quinoa (500 kcal, 50g carboidrati, 30g proteine, 20g grassi), Cena - pesce al forno con verdure (400 kcal, 20g carboidrati, 35g proteine, 15g grassi)." # Risposta per la dieta per migliorare l'energia
+
+  utter_dieta_keto:
+    - text: "Ecco un esempio di dieta keto: Colazione - uova strapazzate con avocado, Pranzo - insalata di pollo con olio d'oliva, Cena - salmone al forno con broccoli."
+    - text: "Ecco un piano alimentare keto: Colazione - yogurt greco con noci, Pranzo - hamburger senza pane con insalata, Cena - pollo al curry con cavolfiore."
+    - text: "Ecco un esempio di dieta keto: Colazione - omelette con formaggio e spinaci, Pranzo - insalata di tonno con avocado, Cena - bistecca con asparagi."
+
+  # Schede di allenamento
+  utter_scheda_gambe:
+    - text: "Ecco una scheda di allenamento per le gambe: 3 serie di squat, 3 serie di affondi, 3 serie di leg press."
+
+  utter_scheda_petto:
+    - text: "Ecco una scheda di allenamento per il petto: 3 serie di panca piana, 3 serie di panca inclinata, 3 serie di chest fly."
+
+  utter_scheda_braccia:
+    - text: "Ecco una scheda di allenamento per le braccia: 3 serie di curl con manubri, 3 serie di estensioni tricipiti."
+
+  utter_scheda_schiena:
+    - text: "Ecco una scheda di allenamento per la schiena: 3 serie di rematore con manubri, 3 serie di lat machine, 3 serie di stacchi da terra."
+
+  utter_scheda_addominali:
+    - text: "Ecco una scheda di allenamento per gli addominali: 3 serie di crunch, 3 serie di plank, 3 serie di leg raises."
+
+  utter_scheda_spalle:
+    - text: "Ecco una scheda di allenamento per le spalle: 3 serie di shoulder press, 3 serie di alzate laterali, 3 serie di alzate frontali."
+  # Richieste esercizi specifici
+  utter_richiesta_esercizio_defaticante:
+    - text: "Ecco un esercizio defaticante: prova il rilassamento muscolare. Fai 5 minuti di respirazione profonda."
+
+  utter_richiesta_esercizio_braccia:
+    - text: "Ecco un esercizio per le braccia: prova i curl con i manubri. Fai 3 serie da 12 ripetizioni."
+    - text: "Ecco un esercizio per le braccia: prova le estensioni tricipiti. Fai 3 serie da 10 ripetizioni."
+    - text: "Ecco un esercizio per le braccia: prova le flessioni. Fai 3 serie da 8 ripetizioni."
+
+  utter_richiesta_esercizio_gambe:
+    - text: "Ecco un esercizio per le gambe: prova gli squat. Fai 3 serie da 10 ripetizioni."
+    - text: "Ecco un esercizio per le gambe: prova gli affondi. Fai 3 serie da 10 ripetizioni."
+    - text: "Ecco un esercizio per le gambe: prova la leg press. Fai 3 serie da 12 ripetizioni."
+
+  utter_richiesta_esercizio_schiena:
+    - text: "Ecco un esercizio per la schiena: prova il rematore con manubri. Fai 3 serie da 10 ripetizioni."
+    - text: "Ecco un esercizio per la schiena: prova le trazioni. Fai 3 serie da 8 ripetizioni."
+    - text: "Ecco un esercizio per la schiena: prova gli stacchi da terra. Fai 3 serie da 10 ripetizioni."
+
+  utter_richiesta_esercizio_petto:
+    - text: "Ecco un esercizio per il petto: prova la panca piana. Fai 3 serie da 10 ripetizioni."
+    - text: "Ecco un esercizio per il petto: prova la panca inclinata. Fai 3 serie da 10 ripetizioni."
+    - text: "Ecco un esercizio per il petto: prova le flessioni. Fai 3 serie da 8 ripetizioni."
+
+  utter_ask_more_details:
+    - text: "Hai bisogno di maggiori dettagli?"
+
+  # Saluto finale
+  utter_goodbye:
+    - text: "Grazie per avermi usato! A presto e buon allenamento! 💪 Ricorda di bere molta acqua e di riposare adeguatamente."
 
 # Slot
 slots:
@@ -95,6 +162,10 @@ actions:
   - utter_diet_plan
   - validate_fitness_form
   - action_create_personalized_workout
+  - utter_dieta_vegana
+  - utter_dieta_keto
+  - utter_scheda_schiena
+  - action_provide_exercises
 
 session_config:
   session_expiration_time: 60

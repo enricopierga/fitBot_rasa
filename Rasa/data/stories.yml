@@ -1,10 +1,5 @@
 version: "3.1"
 stories:
-
-  - story: Avvio del bot
-    steps:
-      - intent: start
-      - action:
   - story: Richiesta piano personalizzato
     steps:
       - intent: request_personalized_workout
@@ -21,4 +16,3 @@ stories:
       - active_loop: fitness_form
       - intent: affirm
       - action: action_provide_exercises
-
