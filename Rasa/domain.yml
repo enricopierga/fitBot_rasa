@@ -23,8 +23,10 @@ intents:
   - request_personalized_workout
   - affirm
   - deny
-  - start
-  - request-exercises
+  - request_diet_weight_loss
+  - request_diet_balanced
+  - request_diet_muscle_gain
+  - request_diet_energy
 
 responses:
   utter_greet:
@@ -49,6 +51,16 @@ responses:
         🤔 Saluta o termina la conversazione: Es. "Ciao" o "Arrivederci"  
 
         🎯 Prova ora! Quale obiettivo vuoi raggiungere oggi?
+
+  utter_ask_fitness_goal:
+    - text: "Qual è il tuo obiettivo fitness? (ad esempio, perdere peso, aumentare massa muscolare, migliorare la resistenza)"
+
+  utter_ask_experience_level:
+    - text: "Qual è il tuo livello di esperienza con l'allenamento? (Principiante, Intermedio, Avanzato)"
+
+  utter_ask_availability:
+    - text: "Quanti ore a settimana puoi dedicare all'allenamento?"
+
   utter_workout_plan:
     - text: "Ecco un piano di allenamento settimanale: Lunedì - Petto e tricipiti, Martedì - Schiena e bicipiti, Mercoledì - Gambe, Giovedì - Spalle, Venerdì - Addominali e cardio, Sabato - Riposo, Domenica - Allenamento totale." # Risposta per il piano di allenamento
 
@@ -56,10 +68,13 @@ responses:
     - text: "Ecco una dieta settimanale bilanciata: Colazione - avena con frutta, Pranzo - pollo alla griglia con insalata, Cena - pesce con verdure al vapore, Snack - frutta secca e yogurt." # Risposta per il piano alimentare
 
   utter_dieta_perdita_peso:
-    - text: "Ecco un esempio di dieta per perdere peso: Colazione - smoothie verde (250 kcal, 30g carboidrati, 10g proteine, 5g grassi), Pranzo - insalata di quinoa con verdure (400 kcal, 50g carboidrati, 20g proteine, 15g grassi), Cena - petto di pollo alla griglia con broccoli (350 kcal, 10g carboidrati, 40g proteine, 15g grassi), Snack - carote e hummus (150 kcal, 20g carboidrati, 5g proteine, 7g grassi)." # Risposta per la dieta per perdita di peso
+    - text: "Ecco un esempio di dieta per perdere peso: Colazione - smoothie verde (250 kcal, 30g carboidrati, 10g proteine, 5g grassi), Pranzo - insalata di quinoa con verdure (400 kcal, 50g carboidrati, 20g proteine, 15g grassi), Cena - petto di pollo alla griglia con broccoli (350 kcal, 10g carboidrati, 40g proteine, 15g grassi), Snack - carote e hummus (150 kcal, 20g carboidrati, 5g proteine, 7g grassi)."
 
   utter_dieta_aumento_massa:
     - text: "Ecco un esempio di dieta per aumentare la massa muscolare: Colazione - omelette con 3 uova e spinaci (400 kcal, 5g carboidrati, 30g proteine, 30g grassi), Pranzo - riso integrale con pollo e avocado (600 kcal, 70g carboidrati, 40g proteine, 20g grassi), Cena - salmone con patate dolci (500 kcal, 50g carboidrati, 35g proteine, 25g grassi)." # Risposta per la dieta per aumento di massa
+
+  utter_scheda_defaticante:
+    - text: "Ecco una scheda defaticante: 10 minuti di stretching leggero e 5 minuti di camminata rilassante."
 
   utter_dieta_equilibrata:
     - text: "Ecco un esempio di dieta equilibrata: Colazione - yogurt con frutta, Pranzo - insalata mista, Cena - pesce con verdure." # Risposta per la dieta equilibrata
@@ -170,6 +185,7 @@ actions:
   - utter_scheda_schiena
   - action_provide_exercises
   - action_default_fallback
+  - utter_scheda_defaticante
 
 session_config:
   session_expiration_time: 60

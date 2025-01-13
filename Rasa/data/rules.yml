@@ -96,8 +96,6 @@ rules:
     steps:
       - intent: goodbye
       - action: utter_goodbye
-
-  #Form Rules
   - rule: Attiva il form per raccogliere informazioni sull'utente
     steps:
       - intent: request_personalized_workout
@@ -109,7 +107,7 @@ rules:
       - active_loop: fitness_form
     steps:
       - action: fitness_form
-      - active_loop: null #disattiva il form
+      - active_loop: null # Disattiva il form
       - action: action_create_personalized_workout
       - action: utter_ask_more_details
 
@@ -117,3 +115,42 @@ rules:
     steps:
       - intent: affirm
       - action: action_provide_exercises
+
+  - rule: Fornisci un allenamento defaticante
+    steps:
+      - intent: RichiestaAllenamentoDefaticante
+      - action: utter_scheda_defaticante
+
+  - rule: Fornisci dieta per perdita di peso
+    steps:
+      - intent: request_diet_weight_loss
+      - action: utter_dieta_perdita_peso
+
+  - rule: Fornisci dieta equilibrata
+    steps:
+      - intent: request_diet_balanced
+      - action: utter_dieta_equilibrata
+
+  - rule: Fornisci dieta per aumento massa muscolare
+    steps:
+      - intent: request_diet_muscle_gain
+      - action: utter_dieta_aumento_massa
+
+  - rule: Fornisci dieta per migliorare energia
+    steps:
+      - intent: request_diet_energy
+      - action: utter_dieta_energia
+
+  - rule: Completa il form per piano di allenamento
+    condition:
+      - active_loop: fitness_form
+    steps:
+      - action: fitness_form
+      - active_loop: null # Il form è completato
+      - action: action_create_personalized_workout
+      - action: utter_ask_more_details
+
+  - rule: Gestione risposta negativa
+    steps:
+      - intent: deny
+      - action: utter_goodbye

@@ -2,90 +2,99 @@
 #### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
 
 stories:
-- story: happy path 1
-  steps:
-  - user: |
-      hello there!
-    intent: greet
-  - action: utter_greet
-  - user: |
-      amazing
-    intent: mood_great
-  - action: utter_happy
+  - story: Test saluto e piano di allenamento
+    steps:
+      - user: |
+          Ciao!
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Vorrei un piano di allenamento
+        intent: request_workout_plan
+      - action: utter_workout_plan
 
-- story: happy path 2
-  steps:
-  - user: |
-      hello there!
-    intent: greet
-  - action: utter_greet
-  - user: |
-      amazing
-    intent: mood_great
-  - action: utter_happy
-  - user: |
-      bye-bye!
-    intent: goodbye
-  - action: utter_goodbye
+  - story: Test saluto e piano alimentare
+    steps:
+      - user: |
+          Salve!
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Mi serve un piano alimentare
+        intent: request_diet_plan
+      - action: utter_diet_plan
 
-- story: sad path 1
-  steps:
-  - user: |
-      hello
-    intent: greet
-  - action: utter_greet
-  - user: |
-      not good
-    intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - user: |
-      yes
-    intent: affirm
-  - action: utter_happy
+  - story: Test richiesta dieta vegana
+    steps:
+      - user: |
+          Voglio una dieta vegana
+        intent: RichiestaDietaVegana
+      - action: utter_dieta_vegana
 
-- story: sad path 2
-  steps:
-  - user: |
-      hello
-    intent: greet
-  - action: utter_greet
-  - user: |
-      not good
-    intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - user: |
-      not really
-    intent: deny
-  - action: utter_goodbye
+  - story: Test richiesta dieta keto
+    steps:
+      - user: |
+          Mi serve una dieta keto
+        intent: RichiestaDietaKeto
+      - action: utter_dieta_keto
 
-- story: sad path 3
-  steps:
-  - user: |
-      hi
-    intent: greet
-  - action: utter_greet
-  - user: |
-      very terrible
-    intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - user: |
-      no
-    intent: deny
-  - action: utter_goodbye
+  - story: Test richiesta scheda di allenamento per la schiena
+    steps:
+      - user: |
+          Puoi darmi una scheda per la schiena?
+        intent: RichiestaSchedaAllenamentoSchiena
+      - action: utter_scheda_schiena
 
-- story: say goodbye
-  steps:
-  - user: |
-      bye-bye!
-    intent: goodbye
-  - action: utter_goodbye
+  - story: Test richiesta scheda defaticante
+    steps:
+      - user: |
+          Mi serve un allenamento defaticante
+        intent: RichiestaAllenamentoDefaticante
+      - action: utter_scheda_defaticante
 
-- story: bot challenge
-  steps:
-  - user: |
-      are you a bot?
-    intent: bot_challenge
-  - action: utter_iamabot
+  - story: Test saluto e fine conversazione
+    steps:
+      - user: |
+          Ciao, ci vediamo!
+        intent: goodbye
+      - action: utter_goodbye
+
+  - story: Test richiesta esercizi specifici
+    steps:
+      - user: |
+          Dammi un esercizio per le braccia
+        intent: RichiestaEsercizioBraccia
+      - action: utter_richiesta_esercizio_braccia
+      - user: |
+          Puoi suggerirmi un esercizio per il petto?
+        intent: RichiestaEsercizioPetto
+      - action: utter_richiesta_esercizio_petto
+
+  - story: Test form per piano di allenamento personalizzato
+    steps:
+      - user: |
+          Vorrei un piano di allenamento personalizzato
+        intent: request_personalized_workout
+      - action: fitness_form
+      - active_loop: fitness_form
+      - user: |
+          Perdere peso
+        intent: inform
+        entities:
+          - entity: fitness_goal
+            value: "perdere peso"
+      - user: |
+          Sono un principiante
+        intent: inform
+        entities:
+          - entity: experience_level
+            value: "principiante"
+      - user: |
+          Posso allenarmi 3 giorni a settimana
+        intent: inform
+        entities:
+          - entity: availability
+            value: "3 giorni"
+      - active_loop: null
+      - action: action_create_personalized_workout
+      - action: utter_ask_more_details

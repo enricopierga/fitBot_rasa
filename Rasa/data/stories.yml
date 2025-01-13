@@ -8,11 +8,7 @@ stories:
       - active_loop: null
       - action: action_create_personalized_workout
       - action: utter_ask_more_details
-
-  - story: Richiesta dettagli su esercizi
-    steps:
-      - intent: request_personalized_workout
-      - action: fitness_form
-      - active_loop: fitness_form
       - intent: affirm
       - action: action_provide_exercises
+      - intent: deny
+      - action: utter_goodbye

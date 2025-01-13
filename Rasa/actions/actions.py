@@ -1,9 +1,9 @@
-from typing import Any, Text, Dict, List
+from typing import Any, Text, Dict
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import Form, SlotSet
 
-from typing import Any, Text, Dict, List
+from typing import Any, Text, Dict
 from rasa_sdk import Tracker, FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
@@ -21,9 +21,12 @@ class ValidateFitnessForm(FormValidationAction):
     ) -> Dict[Text, Any]:
         """Validate the 'fitness_goal' slot."""
         valid_goals = ["perdere peso", "aumentare la massa muscolare", "migliorare il tono fisico"]
-        if slot_value.lower() in valid_goals:
+        slot_value = slot_value.strip().lower()
+        if slot_value in valid_goals:
             return {"fitness_goal": slot_value}
-        dispatcher.utter_message(text=f"L'obiettivo '{slot_value}' non è valido. Puoi scegliere tra: {', '.join(valid_goals)}.")
+        dispatcher.utter_message(
+            text=f"L'obiettivo '{slot_value}' non è valido. Puoi scegliere tra: {', '.join(valid_goals)}."
+        )
         return {"fitness_goal": None}
 
     async def validate_experience_level(
@@ -35,9 +38,12 @@ class ValidateFitnessForm(FormValidationAction):
     ) -> Dict[Text, Any]:
         """Validate the 'experience_level' slot."""
         valid_levels = ["principiante", "intermedio", "avanzato"]
-        if slot_value.lower() in valid_levels:
+        slot_value = slot_value.strip().lower()
+        if slot_value in valid_levels:
             return {"experience_level": slot_value}
-        dispatcher.utter_message(text=f"Il livello '{slot_value}' non è valido. Puoi scegliere tra: {', '.join(valid_levels)}.")
+        dispatcher.utter_message(
+            text=f"Il livello '{slot_value}' non è valido. Puoi scegliere tra: {', '.join(valid_levels)}."
+        )
         return {"experience_level": None}
 
     async def validate_availability(
@@ -50,12 +56,13 @@ class ValidateFitnessForm(FormValidationAction):
         """Validate the 'availability' slot."""
         try:
             hours = int(slot_value)
-            if hours > 0:
+            if 1 <= hours <= 168:
                 return {"availability": hours}
         except ValueError:
             pass
-        dispatcher.utter_message(text="Inserisci un numero valido di ore per settimana.")
+        dispatcher.utter_message(text="Inserisci un numero valido di ore (1-168) per settimana.")
         return {"availability": None}
+
     
 class ActionSubmitFitnessForm(Action):
 

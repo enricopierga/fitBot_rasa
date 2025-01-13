@@ -10,44 +10,44 @@ nlu:
       - Ciao Fitbot!
       - Hey Fitbot
 
-  - intent: start
-    examples: |
-      - /start
-      - /starc
-      - Start
-      - /stArt
-      - start
-
-  # Intenti allenamento e dieta generico
+  # Intento: Richiesta piano di allenamento
   - intent: request_workout_plan
     examples: |
-      - Voglio un piano di allenamento settimanale
-      - Puoi crearmi un programma di esercizi?
-      - Aiutami a pianificare gli allenamenti per questa settimana
-      - Piano per allenarmi questa settimana
-      - Vorrei un piano per allenarmi
-      - Vorrei un piano settimanale
+      - Ho bisogno di un piano di allenamento
+      - Puoi crearmi un piano di esercizi?
+      - Crea un programma di allenamento settimanale per me
+      - Suggerimenti per un piano di allenamento settimanale?
+      - Aiutami a pianificare un piano di allenamento
+      - Dammi un esempio di piano di allenamento settimanale
+      - Vorrei migliorare la mia routine di allenamento, hai un piano?
 
+  # Intento: Richiesta piano alimentare
   - intent: request_diet_plan
     examples: |
-      - Puoi darmi una dieta settimanale?
-      - Ho bisogno di un piano alimentare
-      - Suggerimenti per una dieta sana?
-      - Puoi suggerirmi una dieta per migliorare la mia salute?
-      - Dammi idee per pasti sani durante la settimana
+      - Mi serve un piano alimentare settimanale
+      - Puoi consigliarmi un piano alimentare bilanciato?
+      - Vorrei sapere cosa mangiare durante la settimana
+      - Ho bisogno di aiuto con la mia alimentazione
+      - Dammi un esempio di dieta per la settimana
+      - Qual è il miglior piano alimentare per me?
+      - Puoi darmi un piano alimentare personalizzato?
+
+  # Intento: Richiesta dieta keto
+  - intent: RichiestaDietaKeto
+    examples: |
+      - Puoi darmi informazioni sulla dieta keto?
+      - Ho bisogno di un esempio di dieta keto
+      - Quali cibi sono permessi nella dieta keto?
+      - Puoi suggerirmi un piano keto settimanale?
+      - Dammi un esempio di dieta keto per perdere peso
+      - Vorrei sapere di più sulla dieta chetogenica
+      - Cosa prevede una tipica dieta keto?
 
   # Intenti diete specifiche
   - intent: RichiestaDietaVegana
     examples: |
       - Vorrei una dieta vegana
       - Mi consiglieresti una dieta vegana?
-
-  - intent: RichiestaDietaKeto
-    examples: |
-      - Puoi darmi un piano alimentare keto?
-      - Vorrei sapere di più sulla dieta keto.
-      - Quali sono i cibi permessi nella dieta keto?
-      - Dammi un esempio di dieta keto per una settimana.
 
   # Intenti schede allenamento
   - intent: RichiestaSchedaAllenamentoSchiena
@@ -164,13 +164,14 @@ nlu:
       - A presto, ci vediamo domani
       - A presto, ci vediamo la prossima settimana
 
+  # Intento: Richiesta personalizzata per obiettivi di fitness
   - intent: request_personalized_workout
     examples: |
-      - Voglio un piano di allenamento personalizzato
-      - Mi serve un programma di allenamento su misura
-      - Aiutami a pianificare un allenamento personalizzato
-      - Vorrei un piano di allenamento personalizzato
-      - Crea un programma di esercizi personalizzato per me
+      - Puoi creare un piano di allenamento per i miei obiettivi?
+      - Mi serve un programma personalizzato per allenarmi
+      - Ho bisogno di un allenamento su misura
+      - Dammi un esempio di allenamento personalizzato
+      - Crea un programma su misura per il mio livello di esperienza
 
   - intent: affirm
     examples: |
@@ -180,10 +181,56 @@ nlu:
       - Assolutamente
       - Sicuramente
 
+  - intent: request_diet_weight_loss
+    examples: |
+      - Vorrei una dieta per perdere peso
+      - Puoi consigliarmi una dieta per dimagrire?
+      - Ho bisogno di un piano alimentare per perdita di peso
+      - Suggerimenti per una dieta dimagrante?
+      - Dammi un esempio di dieta per perdere peso
+
+  - intent: request_diet_balanced
+    examples: |
+      - Vorrei una dieta equilibrata
+      - Puoi consigliarmi una dieta bilanciata?
+      - Ho bisogno di una dieta sana e bilanciata
+      - Suggerimenti per una dieta equilibrata?
+      - Dammi un esempio di dieta bilanciata
+
+  - intent: request_diet_muscle_gain
+    examples: |
+      - Vorrei una dieta per aumentare la massa muscolare
+      - Ho bisogno di una dieta per mettere massa
+      - Puoi darmi un esempio di dieta per guadagnare massa muscolare?
+      - Suggerimenti per una dieta di aumento massa?
+
+  - intent: request_diet_energy
+    examples: |
+      - Vorrei una dieta per migliorare la mia energia
+      - Puoi consigliarmi una dieta per avere più energia?
+      - Ho bisogno di una dieta per sentirmi più energico
+
+  # Intento: Conferma dell'utente
+  - intent: affirm
+    examples: |
+      - Sì
+      - Certo
+      - Assolutamente sì
+      - Sicuramente
+      - Giusto
+      - È esatto
+      - Esattamente
+      - Sì, lo voglio
+      - Sì, per favore
+
+  # Intento: Negazione dell'utente
   - intent: deny
     examples: |
       - No
+      - Non ancora
       - Non credo
-      - Non ora
-      - Non sono interessato
+      - Preferisco di no
+      - Assolutamente no
       - No, grazie
+      - No, non voglio
+      - Non è necessario

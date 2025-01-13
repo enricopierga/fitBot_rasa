@@ -1,11 +1,13 @@
 recipe: default.v1
 assistant_id: 20241216-182454-annoying-texture
 language: it
+
 pipeline:
   - name: WhitespaceTokenizer
   - name: RegexFeaturizer
   - name: CountVectorsFeaturizer
   - name: DIETClassifier
+    constrain_similarities: true
     epochs: 100
   - name: EntitySynonymMapper
   - name: ResponseSelector
@@ -17,3 +19,6 @@ policies:
   - name: RulePolicy
     core_fallback_action_name: "action_default_fallback"
     core_fallback_threshold: 0.4
+  - name: TEDPolicy
+    max_history: 5
+    epochs: 100
