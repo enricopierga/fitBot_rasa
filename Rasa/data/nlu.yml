@@ -30,6 +30,9 @@ nlu:
       - Aiutami a pianificare un piano di allenamento
       - Dammi un esempio di piano di allenamento settimanale
       - Vorrei migliorare la mia routine di allenamento, hai un piano?
+      - Allenamento generico
+      - Piano di esercizi generico
+      - Piano generico di allenamento
 
   # Intento: Richiesta piano alimentare
   - intent: request_diet_plan
@@ -40,7 +43,9 @@ nlu:
       - Ho bisogno di aiuto con la mia alimentazione
       - Dammi un esempio di dieta per la settimana
       - Qual è il miglior piano alimentare per me?
-      - Puoi darmi un piano alimentare personalizzato?
+      - Puoi darmi un piano alimentare sano generico?
+      - Dieta sana 
+      - Dieta generica
 
   # Intento: Richiesta dieta keto
   - intent: RichiestaDietaKeto
@@ -52,12 +57,22 @@ nlu:
       - Dammi un esempio di dieta keto per perdere peso
       - Vorrei sapere di più sulla dieta chetogenica
       - Cosa prevede una tipica dieta keto?
+      - Dieta keto
+      - Dieta chetogenica
+      - Vorrei una dieta cheto
+      - Vorrei dieta chetogenica
 
   # Intenti diete specifiche
   - intent: RichiestaDietaVegana
     examples: |
       - Vorrei una dieta vegana
       - Mi consiglieresti una dieta vegana?
+      - Dieta vegana
+      - voglio diventare vegano
+      - esempio dieta vegana
+      - dammi una dieta vegana
+      - Fornisci una dieta vegana
+      - Consigliami una dieta vegana
 
   # Intenti schede allenamento
   - intent: RichiestaSchedaAllenamentoSchiena
@@ -67,6 +82,12 @@ nlu:
       - Qual è una buona scheda per la schiena?
       - Dammi un allenamento per la schiena.
       - Vorrei una scheda per la schiena.
+      - Scheda schiena
+      - Dammi una scheda per la schiena
+      - Porgramma schiena
+      - Oggi voglio allenare la schiena
+      - Voglio allenare la schiena
+      - Allenamento schiena
 
   - intent: RichiestaAllenamentoDefaticante
     examples: |
@@ -76,6 +97,11 @@ nlu:
       - Quali esercizi posso fare per defaticare dopo l'allenamento?
       - Dammi un allenamento di stretching.
       - Vorrei sapere come defaticare dopo una corsa.
+      - Mi sento stnco
+      - Ho dolori muscolari
+      - Ho forti dolori muscolari, vorrei risposarmi
+      - Vorrei allenarmi per recuperare
+      - Ho dolori muscolari dopo l'allenamento di ieri
 
   - intent: RichiestaSchedaAllenamentoGambe
     examples: |
@@ -84,6 +110,9 @@ nlu:
       - Qual è una buona scheda per le gambe?
       - Dammi un allenamento per le gambe.
       - Vorrei una scheda per le gambe.
+      - Scheda gambe
+      - Voglio allenare le gambe
+      - Allenamento scheda gambe
 
   - intent: RichiestaSchedaAllenamentoPetto
     examples: |
@@ -92,6 +121,8 @@ nlu:
       - Qual è una buona scheda per il petto?
       - Dammi un allenamento per il petto.
       - Vorrei una scheda per il petto.
+      - Scheda petto
+      - Scheda allenamento petto
 
   - intent: RichiestaSchedaAllenamentoBraccia
     examples: |
@@ -100,6 +131,8 @@ nlu:
       - Qual è una buona scheda per le braccia?
       - Dammi un allenamento per le braccia.
       - Vorrei una scheda per le braccia.
+      - Scheda braccia
+      - Scheda allenamento braccia
 
   - intent: RichiestaSchedaAllenamentoAddominali
     examples: |
@@ -108,6 +141,9 @@ nlu:
       - Qual è una buona scheda per gli addominali?
       - Dammi un allenamento per gli addominali.
       - Vorrei una scheda per gli addominali.
+      - Vorrei fare addominali
+      - Scheda addominali
+      - Oggi voglio una scheda addominali
 
   - intent: RichiestaSchedaAllenamentoSpalle
     examples: |
@@ -116,6 +152,9 @@ nlu:
       - Qual è una buona scheda per le spalle?
       - Dammi un allenamento per le spalle.
       - Vorrei una scheda per le spalle.
+      - Scheda spalle
+      - Oggi voglio allenare le spalle
+      - Vorrei allenare le spalle
 
   - intent: RichiestaEsercizioDefaticante
     examples: |
@@ -124,6 +163,7 @@ nlu:
       - Mostrami un esercizio per rilassare i muscoli
       - Puoi suggerirmi un esercizio per defaticare dopo l'allenamento?
       - Qual è il miglior esercizio per defaticare?
+      - Esercizio defaticante
 
   - intent: RichiestaEsercizioBraccia
     examples: |
@@ -182,6 +222,11 @@ nlu:
       - Ho bisogno di un allenamento su misura
       - Dammi un esempio di allenamento personalizzato
       - Crea un programma su misura per il mio livello di esperienza
+      - Creiamo un programma personalizzato di allenamento
+      - Voglio un piano personalizzato
+      - Voglio un programma personalizzato
+      - Piano personalizzato
+      - Programma personalizzato
 
   - intent: affirm
     examples: |
@@ -224,6 +269,8 @@ nlu:
   - intent: affirm
     examples: |
       - Sì
+      - si
+      - sì
       - Certo
       - Assolutamente sì
       - Sicuramente
@@ -232,6 +279,11 @@ nlu:
       - Esattamente
       - Sì, lo voglio
       - Sì, per favore
+      - Perchè no
+      - Ovviamente
+      - Esatto
+      - Ok
+      - Chiaro che sì
 
   # Intento: Negazione dell'utente
   - intent: deny

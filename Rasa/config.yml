@@ -8,17 +8,19 @@ pipeline:
   - name: CountVectorsFeaturizer
   - name: DIETClassifier
     constrain_similarities: true
-    epochs: 100
+    epochs: 150
   - name: EntitySynonymMapper
+  - name: CRFEntityExtractor
   - name: ResponseSelector
     epochs: 100
   - name: FallbackClassifier
-    threshold: 0.3
+    threshold: 0.4
 
 policies:
   - name: RulePolicy
     core_fallback_action_name: "action_default_fallback"
-    core_fallback_threshold: 0.4
+    core_fallback_threshold: 0.3
+    enable_fallback_prediction: true
   - name: TEDPolicy
-    max_history: 5
+    max_history: 10
     epochs: 100

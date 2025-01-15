@@ -2,6 +2,7 @@ version: "3.1" # Versione del formato del file di dominio
 
 # Definizione degli intenti che il bot può riconoscere
 intents:
+  - start
   - greet # Intento per il saluto
   - request_workout_plan # Intento per richiedere un piano di allenamento
   - request_diet_plan # Intento per richiedere un piano alimentare
@@ -40,7 +41,7 @@ responses:
 
         🍎 Piani alimentari e diete  
         4️⃣ Richiedi un piano alimentare settimanale: Es. "Ho bisogno di una dieta sana"  
-        5️⃣ Scopri diete specifiche: Es. "Fammi un esempio di dieta keto"  
+        5️⃣ Scopri diete specifiche: Es. "Fammi un esempio di dieta keto/dieta vegana"  
 
         💪 Esercizi specifici  
         6️⃣ Trova esercizi mirati: Es. "Dammi un esercizio per il petto"  
@@ -133,10 +134,7 @@ responses:
     - text: "Ecco un esercizio per il petto: prova le flessioni. Fai 3 serie da 8 ripetizioni."
 
   utter_ask_more_details:
-    - text: "Hai bisogno di maggiori dettagli?"
-
-  utter_default:
-    - text: "Mi dispiace, non ho capito la tua richiesta. Puoi riformularla o chiedermi qualcosa di diverso? 😊"
+    - text: "Vuoi sapere di più su esercizi specifici o consigli per il tuo piano?"
 
   # Saluto finale
   utter_goodbye:
@@ -189,6 +187,8 @@ actions:
   - action_provide_exercises
   - action_default_fallback
   - utter_scheda_defaticante
+  - action_submit_fitness_form
+  - action_reset_slots
 
 session_config:
   session_expiration_time: 60

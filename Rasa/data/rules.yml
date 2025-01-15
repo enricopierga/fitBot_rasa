@@ -3,10 +3,14 @@ rules:
   - rule: Azione di fallback
     steps:
       - intent: nlu_fallback
-      - action: utter_default
+      - action: action_default_fallback
 
-  # Regole per il saluto
-  - rule: Rispondi al saluto
+  - rule: Rispondi al saluto di avvio
+    steps:
+      - intent: start
+      - action: utter_greet
+
+  - rule: Rispondi al saluto generico
     steps:
       - intent: greet
       - action: utter_greet
@@ -95,27 +99,8 @@ rules:
   - rule: Rispondi al saluto di addio
     steps:
       - intent: goodbye
+      - action: action_reset_slots
       - action: utter_goodbye
-  
-  - rule: Attiva il form per raccogliere informazioni sull'utente
-    steps:
-      - intent: request_personalized_workout
-      - action: fitness_form
-      - active_loop: fitness_form
-
-  - rule: Completa il form e fornisce esercizi
-    condition:
-      - active_loop: fitness_form
-    steps:
-      - action: fitness_form
-      - active_loop: null # Disattiva il form
-      - action: action_create_personalized_workout
-      - action: utter_ask_more_details
-
-  - rule: Fornisci dettagli dopo richiesta
-    steps:
-      - intent: affirm
-      - action: action_provide_exercises
 
   - rule: Fornisci un allenamento defaticante
     steps:
@@ -142,16 +127,24 @@ rules:
       - intent: request_diet_energy
       - action: utter_dieta_energia
 
-  - rule: Completa il form per piano di allenamento
+  - rule: Attiva il form per raccogliere informazioni sull'utente
+    steps:
+      - intent: request_personalized_workout
+      - action: fitness_form
+      - active_loop: fitness_form
+
+  - rule: Completa il form e fornisce piano personalizzato
     condition:
       - active_loop: fitness_form
     steps:
       - action: fitness_form
       - active_loop: null # Il form è completato
+      - action: action_submit_fitness_form
       - action: action_create_personalized_workout
       - action: utter_ask_more_details
 
-  - rule: Gestione risposta negativa
+  - rule: Gestisci dettagli aggiuntivi
     steps:
-      - intent: deny
-      - action: utter_goodbye
+      - action: utter_ask_more_details
+      - intent: affirm
+      - action: action_provide_exercises

@@ -8,6 +8,12 @@ from rasa_sdk import Tracker, FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 
+import logging
+
+# Configurazione base del logger
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 class ValidateFitnessForm(FormValidationAction):
     def name(self) -> Text:
         return "validate_fitness_form"
@@ -63,9 +69,7 @@ class ValidateFitnessForm(FormValidationAction):
         dispatcher.utter_message(text="Inserisci un numero valido di ore (1-168) per settimana.")
         return {"availability": None}
 
-    
 class ActionSubmitFitnessForm(Action):
-
     def name(self) -> str:
         return "action_submit_fitness_form"
 
@@ -74,13 +78,13 @@ class ActionSubmitFitnessForm(Action):
         experience_level = tracker.get_slot("experience_level")
         availability = tracker.get_slot("availability")
 
-        # L'azione finale per il form
-        dispatcher.utter_message(text="Grazie! Ora conosco meglio i tuoi obiettivi. Posso creare un piano personalizzato per te!")
-        
-        # Disattiva il form e opzionalmente resettare slot
-        return [Form(None), SlotSet("requested_slot", None)]   
-    
-    
+        # Log dei dati raccolti
+        logger.info(f"Obiettivo: {fitness_goal}, Livello: {experience_level}, Ore: {availability}")
+
+        dispatcher.utter_message(
+            text="Grazie! Ora conosco meglio i tuoi obiettivi. Procedo a creare il tuo piano personalizzato."
+        )
+        return [Form(None), SlotSet("requested_slot", None)]
 
 class ActionCreatePersonalizedWorkout(Action):
 
@@ -88,52 +92,83 @@ class ActionCreatePersonalizedWorkout(Action):
         return "action_create_personalized_workout"
 
     def run(self, dispatcher, tracker, domain):
-        # Recupera i valori delle slot dal form
+        # Recupera i valori degli slot dal form
         fitness_goal = tracker.get_slot("fitness_goal")
         experience_level = tracker.get_slot("experience_level")
         availability = tracker.get_slot("availability")
 
-        # Trasforma il valore di availability in un numero (se possibile)
+        # Trasforma il valore di availability in un numero
         try:
             availability = int(availability)
-        except ValueError:
-            availability = 0  # Default in caso di errore
+        except (ValueError, TypeError):
+            availability = 0  # Valore predefinito in caso di errore
 
-        # Genera il piano in base ai valori
-        workout_plan = ""
+        # Genera il piano in base ai valori raccolti
+        workout_plan = self._generate_workout_plan(fitness_goal, experience_level, availability)
 
-        if fitness_goal == "perdere peso":
-            if experience_level == "principiante":
-                workout_plan = f"Con {availability} ore disponibili, ti consiglio un programma di cardio leggero combinato con esercizi a corpo libero per principianti."
-            elif experience_level == "intermedio":
-                workout_plan = f"Con {availability} ore disponibili, puoi seguire un programma di allenamento HIIT e cardio moderato con esercizi di resistenza."
-            elif experience_level == "avanzato":
-                workout_plan = f"Con {availability} ore disponibili, puoi seguire un programma avanzato di allenamenti combinati cardio e pesistica con alta intensità."
-
-        elif fitness_goal == "aumentare la massa muscolare":
-            if experience_level == "principiante":
-                workout_plan = f"Con {availability} ore disponibili, inizia con esercizi base di pesistica per sviluppare la tecnica e costruire forza."
-            elif experience_level == "intermedio":
-                workout_plan = f"Con {availability} ore disponibili, puoi seguire un programma di ipertrofia muscolare con focus su gruppi muscolari specifici."
-            elif experience_level == "avanzato":
-                workout_plan = f"Con {availability} ore disponibili, segui un programma avanzato con allenamenti giornalieri mirati a gruppi muscolari specifici."
-
-        elif fitness_goal == "migliorare il tono fisico":
-            if experience_level == "principiante":
-                workout_plan = f"Con {availability} ore disponibili, combina esercizi di resistenza leggeri con stretching e allenamenti a corpo libero."
-            elif experience_level == "intermedio":
-                workout_plan = f"Con {availability} ore disponibili, puoi seguire un programma di tonificazione con pesi moderati e allenamenti funzionali."
-            elif experience_level == "avanzato":
-                workout_plan = f"Con {availability} ore disponibili, segui un programma intenso di allenamenti funzionali e resistenza avanzata."
-
-        # Messaggio di default se non ci sono corrispondenze
+        # Messaggio di default se non è stato possibile generare un piano
         if not workout_plan:
-            workout_plan = "Non sono riuscito a generare un piano personalizzato. Fornisci maggiori dettagli sui tuoi obiettivi."
+            workout_plan = "Non sono riuscito a generare un piano personalizzato. Per favore, fornisci maggiori dettagli sui tuoi obiettivi."
 
-        # Invia il messaggio al bot
+        # Invia il piano generato come messaggio al bot
         dispatcher.utter_message(text=f"Ecco il tuo piano di allenamento personalizzato:\n{workout_plan}")
-
         return []
+
+    def _generate_workout_plan(self, fitness_goal, experience_level, availability):
+        """
+        Logica per generare un piano personalizzato in base agli slot raccolti.
+        """
+        # Controllo base dei valori
+        if not fitness_goal or not experience_level or availability <= 0:
+            return None
+
+        # Piani per perdere peso
+        if fitness_goal == "perdere peso":
+            return self._generate_weight_loss_plan(experience_level, availability)
+
+        # Piani per aumentare la massa muscolare
+        elif fitness_goal == "aumentare la massa muscolare":
+            return self._generate_muscle_gain_plan(experience_level, availability)
+
+        # Piani per migliorare il tono fisico
+        elif fitness_goal == "migliorare il tono fisico":
+            return self._generate_tone_plan(experience_level, availability)
+
+        return None
+
+    def _generate_weight_loss_plan(self, experience_level, availability):
+        """
+        Genera un piano per perdere peso.
+        """
+        plans = {
+            "principiante": f"Con {availability} ore disponibili, ti consiglio un programma di cardio leggero combinato con esercizi a corpo libero per principianti.",
+            "intermedio": f"Con {availability} ore disponibili, puoi seguire un programma di allenamento HIIT e cardio moderato con esercizi di resistenza.",
+            "avanzato": f"Con {availability} ore disponibili, puoi seguire un programma avanzato di allenamenti combinati cardio e pesistica con alta intensità."
+        }
+        return plans.get(experience_level)
+
+    def _generate_muscle_gain_plan(self, experience_level, availability):
+        """
+        Genera un piano per aumentare la massa muscolare.
+        """
+        plans = {
+            "principiante": f"Con {availability} ore disponibili, inizia con esercizi base di pesistica per sviluppare la tecnica e costruire forza.",
+            "intermedio": f"Con {availability} ore disponibili, puoi seguire un programma di ipertrofia muscolare con focus su gruppi muscolari specifici.",
+            "avanzato": f"Con {availability} ore disponibili, segui un programma avanzato con allenamenti giornalieri mirati a gruppi muscolari specifici."
+        }
+        return plans.get(experience_level)
+
+    def _generate_tone_plan(self, experience_level, availability):
+        """
+        Genera un piano per migliorare il tono fisico.
+        """
+        plans = {
+            "principiante": f"Con {availability} ore disponibili, combina esercizi di resistenza leggeri con stretching e allenamenti a corpo libero.",
+            "intermedio": f"Con {availability} ore disponibili, puoi seguire un programma di tonificazione con pesi moderati e allenamenti funzionali.",
+            "avanzato": f"Con {availability} ore disponibili, segui un programma intenso di allenamenti funzionali e resistenza avanzata."
+        }
+        return plans.get(experience_level)
+
     
 class ActionAskMoreDetails(Action):
 
@@ -270,3 +305,30 @@ class ActionProvideExercises(Action):
         dispatcher.utter_message(text=f"Ecco alcuni esercizi per te:\n{exercises}")
         return []
     
+class ActionGoodbye(Action):
+    def name(self) -> str:
+        return "utter_goodbye"
+
+    def run(self, dispatcher, tracker, domain):
+        dispatcher.utter_message(text="Grazie per avermi usato! A presto e buon allenamento!")
+        return []
+    
+class ActionDefaultFallback(Action):
+    def name(self) -> str:
+        return "action_default_fallback"
+
+    def run(self, dispatcher, tracker, domain):
+        dispatcher.utter_message(
+            text="Mi dispiace, non ho capito la tua richiesta. Puoi riformularla o chiedermi qualcosa di diverso? 😊"
+        )
+        return []
+
+
+class ActionResetSlots(Action):
+    def name(self) -> str:
+        return "action_reset_slots"
+
+    def run(self, dispatcher, tracker, domain):
+        # Reset di tutti gli slot
+        slots_to_reset = ["fitness_goal", "experience_level", "availability"]
+        return [SlotSet(slot, None) for slot in slots_to_reset]
