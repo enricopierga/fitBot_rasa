@@ -96,6 +96,7 @@ rules:
     steps:
       - intent: goodbye
       - action: utter_goodbye
+  
   - rule: Attiva il form per raccogliere informazioni sull'utente
     steps:
       - intent: request_personalized_workout

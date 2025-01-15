@@ -72,29 +72,14 @@ stories:
 
   - story: Test form per piano di allenamento personalizzato
     steps:
-      - user: |
-          Vorrei un piano di allenamento personalizzato
-        intent: request_personalized_workout
+      - intent: request_personalized_workout
       - action: fitness_form
       - active_loop: fitness_form
-      - user: |
-          Perdere peso
-        intent: inform
-        entities:
-          - entity: fitness_goal
-            value: "perdere peso"
-      - user: |
-          Sono un principiante
-        intent: inform
-        entities:
-          - entity: experience_level
-            value: "principiante"
-      - user: |
-          Posso allenarmi 3 giorni a settimana
-        intent: inform
-        entities:
-          - entity: availability
-            value: "3 giorni"
-      - active_loop: null
+      - action: fitness_form
+      - active_loop: null # Il form si completa qui
       - action: action_create_personalized_workout
       - action: utter_ask_more_details
+      - intent: affirm
+      - action: action_provide_exercises
+      - intent: deny
+      - action: utter_goodbye

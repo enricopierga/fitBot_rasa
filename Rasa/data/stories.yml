@@ -12,3 +12,13 @@ stories:
       - action: action_provide_exercises
       - intent: deny
       - action: utter_goodbye
+
+  - story: Avvio del bot
+    steps:
+      - intent: start
+      - action: utter_greet
+
+  - story: Arrivederci bot
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
