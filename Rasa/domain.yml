@@ -54,13 +54,13 @@ responses:
         🎯 Prova ora! Quale obiettivo vuoi raggiungere oggi?
 
   utter_ask_fitness_goal:
-    - text: "Qual è il tuo obiettivo fitness? (ad esempio, perdere peso, aumentare massa muscolare, migliorare la resistenza)"
+    - text: "🏋️ Qual è il tuo obiettivo fitness? 💪\n✨ Puoi scegliere tra:\n- Perdere peso 🏃\n- Aumentare massa muscolare 💪\n- Migliorare la resistenza ⚡"
 
   utter_ask_experience_level:
-    - text: "Qual è il tuo livello di esperienza con l'allenamento? (Principiante, Intermedio, Avanzato)"
+    - text: "🧐 Qual è il tuo livello di esperienza con l'allenamento? 🏋️‍♂️\n🌱 Principiante\n🌟 Intermedio\n🔥 Avanzato"
 
   utter_ask_availability:
-    - text: "Quanti ore a settimana puoi dedicare all'allenamento?"
+    - text: "⏰ Quante ore a settimana puoi dedicare all'allenamento? 🕒\nInserisci un numero compreso tra 1 e 168. 💪"
 
   utter_workout_plan:
     - text: "Ecco un piano di allenamento settimanale: Lunedì - Petto e tricipiti, Martedì - Schiena e bicipiti, Mercoledì - Gambe, Giovedì - Spalle, Venerdì - Addominali e cardio, Sabato - Riposo, Domenica - Allenamento totale." # Risposta per il piano di allenamento
@@ -134,17 +134,25 @@ responses:
     - text: "Ecco un esercizio per il petto: prova le flessioni. Fai 3 serie da 8 ripetizioni."
 
   utter_ask_more_details:
-    - text: "Vuoi sapere di più su esercizi specifici o consigli per il tuo piano?"
+    - text: "Vuoi sapere di più su esercizi specifici o consigli per il tuo piano? 💪"
 
   # Saluto finale
   utter_goodbye:
     - text: "Grazie per avermi usato! A presto e buon allenamento! 💪 Ricorda di bere molta acqua e di riposare adeguatamente."
 
 #Terminale ngrok:  C:\Users\kikop\Downloads\ngrok-v3-stable-windows-amd64> ngrok http 5005
-##TODO: migliora il form e amplialo
 
 # Slot
 slots:
+  fallback_count:
+    type: float
+    initial_value: 0.0
+    influence_conversation: false
+    min_value: 0
+    max_value: 100
+    mappings: # Richiesto anche se non fa nulla
+      - type: custom
+
   fitness_goal:
     type: text
     mappings:
@@ -189,6 +197,8 @@ actions:
   - utter_scheda_defaticante
   - action_submit_fitness_form
   - action_reset_slots
+  - action_handle_fallback
+  - action_stop_bot
 
 session_config:
   session_expiration_time: 60

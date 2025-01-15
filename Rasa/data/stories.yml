@@ -13,7 +13,6 @@ stories:
       - action: utter_ask_more_details
       - intent: affirm
       - action: action_provide_exercises
-      - intent: goodbye
       - action: action_reset_slots
       - action: utter_goodbye
 
@@ -28,14 +27,5 @@ stories:
       - action: action_create_personalized_workout
       - action: utter_ask_more_details
       - intent: deny
-      - action: action_reset_slots
-      - action: utter_goodbye
-
-  - story: Gestione dettagli aggiuntivi
-    steps:
-      - action: utter_ask_more_details
-      - intent: affirm
-      - action: action_provide_exercises
-      - intent: goodbye
       - action: action_reset_slots
       - action: utter_goodbye

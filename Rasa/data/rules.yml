@@ -1,14 +1,19 @@
 version: "3.1"
 rules:
-  - rule: Azione di fallback
+  - rule: Gestisci fallback globalmente
     steps:
       - intent: nlu_fallback
-      - action: action_default_fallback
+      - action: action_handle_fallback
 
   - rule: Rispondi al saluto di avvio
     steps:
       - intent: start
       - action: utter_greet
+
+  - rule: Gestisci il comando stop e stoppa il bot
+    steps:
+      - intent: stop
+      - action: action_stop_bot
 
   - rule: Rispondi al saluto generico
     steps:
@@ -148,3 +153,5 @@ rules:
       - action: utter_ask_more_details
       - intent: affirm
       - action: action_provide_exercises
+      - action: action_reset_slots
+      - action: utter_goodbye

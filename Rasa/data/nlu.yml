@@ -8,6 +8,12 @@ nlu:
       - /START
       - /sTaRt
 
+  - intent: stop
+    examples: |
+      - /stop
+      - /StoP
+      - /sToP
+
   - intent: greet
     examples: |
       - Ciao
