@@ -10,7 +10,6 @@ from rasa_sdk.types import DomainDict
 from rasa_sdk.events import AllSlotsReset, Restarted, UserUtteranceReverted
 
 import logging
-
 # Configurazione base del logger
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -78,7 +77,7 @@ class ValidateFitnessForm(FormValidationAction):
         except ValueError:
             pass
         dispatcher.utter_message(
-            text="⏰ Inserisci un numero valido di ore (1-168) per settimana. 🕒"
+            text="⏰ Inserisci un numero valido di ore (1-168) per settimana! 🕒"
         )
         return {"availability": None}
 
@@ -207,6 +206,12 @@ class ActionProvideExercises(Action):
         experience_level = tracker.get_slot("experience_level")
         availability = tracker.get_slot("availability")
 
+        # Converte i valori in lowercase per evitare case-sensitive
+        if fitness_goal:
+            fitness_goal = fitness_goal.lower()
+        if experience_level:
+            experience_level = experience_level.lower()
+
         # Trasforma il valore di availability in un numero
         try:
             availability = int(availability)
@@ -244,7 +249,7 @@ class ActionProvideExercises(Action):
                   🔹 Push-up esplosivi (3 serie da 12): Salta con le mani dal pavimento in ogni ripetizione.
                 💥 **Consiglio**: Combina pesistica e cardio in circuiti ad alta intensità, includendo poco tempo di recupero tra le serie.
                 """
-
+        
         elif fitness_goal == "aumentare la massa muscolare":
             if experience_level == "principiante":
                 exercises = """
@@ -257,9 +262,50 @@ class ActionProvideExercises(Action):
                   🔹 Curl per bicipiti (3 serie da 12): Solleva i manubri verso le spalle lentamente.
                 🏆 **Consiglio**: Concentrati sulla tecnica e aumenta progressivamente il carico ogni 2 settimane.
                 """
-            # Aggiungi altre opzioni come sopra...
-
-        # Default se non ci sono corrispondenze
+            elif experience_level == "intermedio":
+                exercises = """
+                🏋️‍♂️ **Split routine**:
+                  🔹 Allenamenti alternati per petto/tricipiti, schiena/bicipiti, gambe/spalle.
+                🔹 Bench press (3 serie da 6-8): Usa il bilanciere e mantieni i gomiti a 90 gradi.
+                🔹 Squat profondo (3 serie da 10-12): Scendi il più possibile senza perdere la postura corretta.
+                🔹 Deadlift (3 serie da 8): Mantieni il carico vicino al corpo durante il movimento.
+                💪 **Consiglio**: Aumenta progressivamente il carico e integra superserie per intensità.
+                """
+            elif experience_level == "avanzato":
+                exercises = """
+                💥 **Programma avanzato**:
+                  🔹 Allenamenti giornalieri mirati a gruppi muscolari specifici (es. push-pull-legs).
+                🔹 Stacco da terra (4 serie da 5): Usa un peso elevato e lavora sulla forza.
+                🔹 Military press (3 serie da 6-8): Solleva il bilanciere sopra la testa mantenendo una posizione stabile.
+                🔹 Squat con bilanciere (3 serie da 6): Mantieni un peso pesante per lo sviluppo muscolare.
+                🔹 Esercizi di isolamento: leg curl, pec deck per rifinire i dettagli muscolari.
+                """
+        
+        elif fitness_goal == "migliorare il tono fisico":
+            if experience_level == "principiante":
+                exercises = """
+                🏋️‍♀️ **Resistenza leggera**:
+                  🔹 Elastici per glutei (3 serie da 15): Usa bande elastiche per resistenza.
+                  🔹 Affondi laterali (3 serie da 12 per gamba): Alterna i lati per migliorare l'equilibrio.
+                  🔹 Crunch (3 serie da 15): Solleva le spalle verso le ginocchia.
+                🌟 **Stretching dinamico**:
+                  🔹 Yoga leggero o Pilates: Dedica 20-30 minuti a sessioni leggere di stretching.
+                """
+            elif experience_level == "intermedio":
+                exercises = """
+                🤸‍♀️ **Allenamento funzionale**:
+                  🔹 Kettlebell swing (3 serie da 15): Usa un movimento esplosivo per sollevare il kettlebell.
+                  🔹 Push-up con variazioni (3 serie da 10-12): Alterna push-up classici e diamantati.
+                  🔹 Squat con salto (3 serie da 12): Aggiungi esplosività ai movimenti.
+                """
+            elif experience_level == "avanzato":
+                exercises = """
+                🏋️‍♀️ **Functional training avanzato**:
+                  🔹 TRX (3 serie da 12): Usa il TRX per esercizi come pull-up e squat.
+                  🔹 Box jump (3 serie da 10): Salta su una scatola o un gradino alto.
+                  🔹 Hollow hold (3 serie da 30 secondi): Mantieni la posizione in isometria.
+                """
+        
         else:
             exercises = "🤔 Non ho abbastanza informazioni per creare esercizi specifici. Prova a fornire dettagli più precisi sui tuoi obiettivi."
 
@@ -267,7 +313,6 @@ class ActionProvideExercises(Action):
         dispatcher.utter_message(text=f"🎉 **Ecco alcuni esercizi per te**:\n{exercises}")
         return []
 
-    
 class ActionGoodbye(Action):
     def name(self) -> str:
         return "utter_goodbye"

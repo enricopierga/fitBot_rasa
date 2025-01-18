@@ -148,10 +148,18 @@ rules:
       - action: action_create_personalized_workout
       - action: utter_ask_more_details
 
-  - rule: Gestisci dettagli aggiuntivi
+  - rule: Gestisci dettagli aggiuntivi - Affirm
     steps:
       - action: utter_ask_more_details
       - intent: affirm
       - action: action_provide_exercises
+      - action: action_reset_slots
+      - action: utter_goodbye
+
+  - rule: Gestisci dettagli aggiuntivi - Deny
+    steps:
+      - action: utter_ask_more_details
+      - intent: deny
+      - action: utter_acknowledge_deny
       - action: action_reset_slots
       - action: utter_goodbye

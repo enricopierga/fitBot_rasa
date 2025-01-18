@@ -1,5 +1,4 @@
 version: "3.1"
-
 stories:
   # Flusso con accettazione dettagli
   - story: Flusso con accettazione dettagli
@@ -27,5 +26,6 @@ stories:
       - action: action_create_personalized_workout
       - action: utter_ask_more_details
       - intent: deny
+      - action: utter_acknowledge_deny
       - action: action_reset_slots
       - action: utter_goodbye

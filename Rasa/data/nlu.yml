@@ -20,8 +20,11 @@ nlu:
       - Buongiorno
       - Hey
       - Salve
+      - Help
+      - help
       - Ciao!
       - Cosa posso fare con questo bot?
+      - Posso fare altro?
       - Quali comandi ci sono?
       - Ciao Fitbot!
       - Hey Fitbot
@@ -103,9 +106,9 @@ nlu:
       - Quali esercizi posso fare per defaticare dopo l'allenamento?
       - Dammi un allenamento di stretching.
       - Vorrei sapere come defaticare dopo una corsa.
-      - Mi sento stnco
+      - Mi sento stanco
       - Ho dolori muscolari
-      - Ho forti dolori muscolari, vorrei risposarmi
+      - Ho forti dolori muscolari, vorrei recuperare
       - Vorrei allenarmi per recuperare
       - Ho dolori muscolari dopo l'allenamento di ieri
 
@@ -230,9 +233,6 @@ nlu:
       - Crea un programma su misura per il mio livello di esperienza
       - Creiamo un programma personalizzato di allenamento
       - Voglio un piano personalizzato
-      - Voglio un programma personalizzato
-      - Piano personalizzato
-      - Programma personalizzato
 
   - intent: affirm
     examples: |
@@ -285,7 +285,6 @@ nlu:
       - Esattamente
       - Sì, lo voglio
       - Sì, per favore
-      - Perchè no
       - Ovviamente
       - Esatto
       - Ok
@@ -302,3 +301,5 @@ nlu:
       - No, grazie
       - No, non voglio
       - Non è necessario
+      - Non mi serve
+      - Non ne ho bisogno

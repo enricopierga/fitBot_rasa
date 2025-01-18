@@ -1,6 +1,7 @@
 version: "3.1" # Versione del formato del file di dominio
-
 # Definizione degli intenti che il bot può riconoscere
+
+##TODO: Formattazioni (togli asterischi); inserisci se vuoi farmi altre domande dopo il completamento form
 intents:
   - start
   - greet # Intento per il saluto
@@ -32,113 +33,206 @@ intents:
 responses:
   utter_greet:
     - text: |
-        👋 Benvenuto! Ecco cosa puoi fare con FitBot, il tuo assistente per il fitness:
+        🤖👋 Benvenuto su FitBot, il tuo assistente virtuale per il fitness e il benessere! 💪  
+        Ecco cosa puoi fare:
 
-        🏋️ Piani di allenamento  
-        1️⃣ Richiedi un piano settimanale: Es. "Dammi un piano di allenamento settimanale"  
-        2️⃣ Ottieni schede personalizzate: Es. "Dammi una scheda per le gambe"  
-        3️⃣ Chiedi un allenamento defaticante: Es. "Hai un esercizio per rilassare i muscoli?"  
+        ---
+        🏋️ Piani di allenamento:  
+        1️⃣ Richiedi un piano settimanale generico:  
+           "Dammi un piano di allenamento settimanale"
+        2️⃣ Schede personalizzate per i gruppi muscolari:  
+           "Voglio allenare le gambe" oppure "Dammi una scheda per il petto"
+           (Gruppi muscolari disponibili: Gambe, Petto, Schiena, Braccia, Addominali, Spalle) 
+        3️⃣ Piani personalizzati su misura:  
+           "Voglio un programma personalizzato"  
 
-        🍎 Piani alimentari e diete  
-        4️⃣ Richiedi un piano alimentare settimanale: Es. "Ho bisogno di una dieta sana"  
-        5️⃣ Scopri diete specifiche: Es. "Fammi un esempio di dieta keto/dieta vegana"  
+        ---
+        🍎 Diete e alimentazione:  
+        4️⃣ Piano alimentare settimanale generico:  
+           "Mi serve un piano alimentare bilanciato" 
+        5️⃣ Diete specifiche:  
+           "Vorrei una dieta keto" oppure "Suggerimenti per una dieta vegana" 
+        6️⃣ Dieta per obiettivi specifici:  
+           "Vorrei una dieta per aumentare la massa muscolare" oppure "Dammi una dieta per perdere peso" 
 
-        💪 Esercizi specifici  
-        6️⃣ Trova esercizi mirati: Es. "Dammi un esercizio per il petto"  
-        7️⃣ Suggerimenti per defaticare: Es. "Hai esercizi per rilassare la schiena?"  
+        ---
+        💪 Esercizi mirati:  
+        7️⃣ Trova esercizi specifici:  
+           "Dammi un esercizio per gli addominali" 
+        8️⃣ Esercizi defaticanti:  
+           "Hai un esercizio per rilassare i muscoli?" Oppure "Puoi darmi un allenamento defaticante?
 
-        ❓ Assistenza e supporto  
-        🔄 Chiedi aiuto: Es. "Come funziona questo bot?"  
-        🤔 Saluta o termina la conversazione: Es. "Ciao" o "Arrivederci"  
+        ---
+        ❓ Assistenza e supporto:  
+        9️⃣ Saluti e chiusura:  
+           Ciao, Arrivederci, oppure /stop per terminare la conversazione  
+        🔄 Chiedi aiuto: "Cosa posso fare con FitBot?
+         ---
+        ⚠️ **Disclaimer**: Le informazioni fornite da FitBot sono a scopo informativo e NON sostituiscono il parere di un medico o di un professionista qualificato. CONSULTA SEMPRE un esperto prima di iniziare un nuovo piano di allenamento o dieta.  
 
-        🎯 Prova ora! Quale obiettivo vuoi raggiungere oggi?
+        ---
+        🎯 Pronto a iniziare? Dimmi cosa desideri fare, oppure prova: "Piano personalizzato per un allenamento su misura! 💪✨
 
   utter_ask_fitness_goal:
-    - text: "🏋️ Qual è il tuo obiettivo fitness? 💪\n✨ Puoi scegliere tra:\n- Perdere peso 🏃\n- Aumentare massa muscolare 💪\n- Migliorare la resistenza ⚡"
+    - text: "🏋️ Qual è il tuo obiettivo fitness? 💪\n✨ Puoi scegliere tra:\n- Perdere peso 🏃\n- Aumentare la massa muscolare 💪\n- Migliorare il tono fisico ⚡"
 
   utter_ask_experience_level:
     - text: "🧐 Qual è il tuo livello di esperienza con l'allenamento? 🏋️‍♂️\n🌱 Principiante\n🌟 Intermedio\n🔥 Avanzato"
 
   utter_ask_availability:
-    - text: "⏰ Quante ore a settimana puoi dedicare all'allenamento? 🕒\nInserisci un numero compreso tra 1 e 168. 💪"
+    - text: "⏰ Quante ore a settimana puoi dedicare all'allenamento? 🕒\n Inserisci un numero! 💪"
 
   utter_workout_plan:
-    - text: "Ecco un piano di allenamento settimanale: Lunedì - Petto e tricipiti, Martedì - Schiena e bicipiti, Mercoledì - Gambe, Giovedì - Spalle, Venerdì - Addominali e cardio, Sabato - Riposo, Domenica - Allenamento totale." # Risposta per il piano di allenamento
+    - text: |
+        📅 Ecco un piano di allenamento settimanale:
+        🏋️‍♂️ Lunedì - Petto e tricipiti  
+        🏋️‍♀️ Martedì - Schiena e bicipiti  
+        🦵 Mercoledì - Gambe  
+        🏋️‍♂️ Giovedì - Spalle  
+        🏃‍♂️ Venerdì - Addominali e cardio  
+        🛌 Sabato - Riposo  
+        💪 Domenica - Allenamento totale.
 
   utter_diet_plan:
-    - text: "Ecco una dieta settimanale bilanciata: Colazione - avena con frutta, Pranzo - pollo alla griglia con insalata, Cena - pesce con verdure al vapore, Snack - frutta secca e yogurt." # Risposta per il piano alimentare
+    - text: |
+        🥗 Ecco una dieta settimanale bilanciata:
+        🍓 Colazione - Avena con frutta  
+        🍗 Pranzo - Pollo alla griglia con insalata  
+        🐟 Cena - Pesce con verdure al vapore  
+        🥜 Snack - Frutta secca e yogurt.
 
   utter_dieta_perdita_peso:
-    - text: "Ecco un esempio di dieta per perdere peso: Colazione - smoothie verde (250 kcal, 30g carboidrati, 10g proteine, 5g grassi), Pranzo - insalata di quinoa con verdure (400 kcal, 50g carboidrati, 20g proteine, 15g grassi), Cena - petto di pollo alla griglia con broccoli (350 kcal, 10g carboidrati, 40g proteine, 15g grassi), Snack - carote e hummus (150 kcal, 20g carboidrati, 5g proteine, 7g grassi)."
+    - text: |
+        🥦 Ecco un esempio di dieta per perdere peso:  
+        🥤 Colazione - Smoothie verde (250 kcal, 30g carboidrati, 10g proteine, 5g grassi)  
+        🥗 Pranzo - Insalata di quinoa con verdure (400 kcal, 50g carboidrati, 20g proteine, 15g grassi)  
+        🍗 Cena - Petto di pollo alla griglia con broccoli (350 kcal, 10g carboidrati, 40g proteine, 15g grassi)  
+        🥕 Snack - Carote e hummus (150 kcal, 20g carboidrati, 5g proteine, 7g grassi).
 
   utter_dieta_aumento_massa:
-    - text: "Ecco un esempio di dieta per aumentare la massa muscolare: Colazione - omelette con 3 uova e spinaci (400 kcal, 5g carboidrati, 30g proteine, 30g grassi), Pranzo - riso integrale con pollo e avocado (600 kcal, 70g carboidrati, 40g proteine, 20g grassi), Cena - salmone con patate dolci (500 kcal, 50g carboidrati, 35g proteine, 25g grassi)." # Risposta per la dieta per aumento di massa
+    - text: |
+        🍳 Ecco un esempio di dieta per aumentare la massa muscolare:  
+        🍳 Colazione - Omelette con 3 uova e spinaci (400 kcal, 5g carboidrati, 30g proteine, 30g grassi)  
+        🍚 Pranzo - Riso integrale con pollo e avocado (600 kcal, 70g carboidrati, 40g proteine, 20g grassi)  
+        🐟 Cena - Salmone con patate dolci (500 kcal, 50g carboidrati, 35g proteine, 25g grassi).
 
   utter_scheda_defaticante:
-    - text: "Ecco una scheda defaticante: 10 minuti di stretching leggero e 5 minuti di camminata rilassante."
+    - text: |
+        🧘‍♂️ Ecco una scheda defaticante:  
+        🕒 10 minuti di stretching leggero  
+        🚶‍♂️ 5 minuti di camminata rilassante.
 
   utter_dieta_equilibrata:
-    - text: "Ecco un esempio di dieta equilibrata: Colazione - yogurt con frutta, Pranzo - insalata mista, Cena - pesce con verdure." # Risposta per la dieta equilibrata
+    - text: |
+        🥗 Ecco un esempio di dieta equilibrata:  
+        🥣 Colazione - Yogurt con frutta  
+        🥗 Pranzo - Insalata mista  
+        🐟 Cena - Pesce con verdure.
 
   utter_dieta_vegana:
-    - text: "Ecco un esempio di dieta vegana: Colazione - smoothie di banana e spinaci (250 kcal, 40g carboidrati, 5g proteine, 5g grassi), Pranzo - burger di lenticchie con insalata (500 kcal, 60g carboidrati, 25g proteine, 15g grassi), Cena - curry di ceci con riso basmati (600 kcal, 80g carboidrati, 20g proteine, 15g grassi)." # Risposta per la dieta vegana
+    - text: |
+        🌱 Ecco un esempio di dieta vegana:  
+        🍹 Colazione - Smoothie di banana e spinaci (250 kcal, 40g carboidrati, 5g proteine, 5g grassi)  
+        🍔 Pranzo - Burger di lenticchie con insalata (500 kcal, 60g carboidrati, 25g proteine, 15g grassi)  
+        🍛 Cena - Curry di ceci con riso basmati (600 kcal, 80g carboidrati, 20g proteine, 15g grassi).
 
   utter_dieta_energia:
-    - text: "Ecco un esempio di dieta per migliorare l'energia: Colazione - toast integrale con avocado (300 kcal, 30g carboidrati, 10g proteine, 15g grassi), Pranzo - insalata di pollo e quinoa (500 kcal, 50g carboidrati, 30g proteine, 20g grassi), Cena - pesce al forno con verdure (400 kcal, 20g carboidrati, 35g proteine, 15g grassi)." # Risposta per la dieta per migliorare l'energia
+    - text: |
+        ⚡ Ecco un esempio di dieta per migliorare l'energia:  
+        🍞 Colazione - Toast integrale con avocado (300 kcal, 30g carboidrati, 10g proteine, 15g grassi)  
+        🥗 Pranzo - Insalata di pollo e quinoa (500 kcal, 50g carboidrati, 30g proteine, 20g grassi)  
+        🐟 Cena - Pesce al forno con verdure (400 kcal, 20g carboidrati, 35g proteine, 15g grassi).
 
   utter_dieta_keto:
-    - text: "Ecco un esempio di dieta keto: Colazione - uova strapazzate con avocado, Pranzo - insalata di pollo con olio d'oliva, Cena - salmone al forno con broccoli."
-    - text: "Ecco un piano alimentare keto: Colazione - yogurt greco con noci, Pranzo - hamburger senza pane con insalata, Cena - pollo al curry con cavolfiore."
-    - text: "Ecco un esempio di dieta keto: Colazione - omelette con formaggio e spinaci, Pranzo - insalata di tonno con avocado, Cena - bistecca con asparagi."
+    - text: |
+        🥑 Ecco un esempio di dieta keto:  
+        🍳 Colazione - Uova strapazzate con avocado  
+        🥗 Pranzo - Insalata di pollo con olio d'oliva  
+        🐟 Cena - Salmone al forno con broccoli.
+    - text: |
+        🥩 Ecco un piano alimentare giornaliero keto:  
+        🍦 Colazione - Yogurt greco con noci  
+        🍔 Pranzo - Hamburger senza pane con insalata  
+        🍛 Cena - Pollo al curry con cavolfiore.
 
   # Schede di allenamento
   utter_scheda_gambe:
-    - text: "Ecco una scheda di allenamento per le gambe: 3 serie di squat, 3 serie di affondi, 3 serie di leg press."
+    - text: |
+        🦵 Ecco una scheda di allenamento per le gambe:  
+        3 serie di squat, 3 serie di affondi, 3 serie di leg press.
 
   utter_scheda_petto:
-    - text: "Ecco una scheda di allenamento per il petto: 3 serie di panca piana, 3 serie di panca inclinata, 3 serie di chest fly."
+    - text: |
+        🏋️‍♂️ Ecco una scheda di allenamento per il petto:  
+        3 serie di panca piana, 3 serie di panca inclinata, 3 serie di chest fly.
 
   utter_scheda_braccia:
-    - text: "Ecco una scheda di allenamento per le braccia: 3 serie di curl con manubri, 3 serie di estensioni tricipiti."
+    - text: |
+        💪 Ecco una scheda di allenamento per le braccia:  
+        3 serie di curl con manubri, 3 serie di estensioni tricipiti.
 
   utter_scheda_schiena:
-    - text: "Ecco una scheda di allenamento per la schiena: 3 serie di rematore con manubri, 3 serie di lat machine, 3 serie di stacchi da terra."
+    - text: |
+        🏋️‍♂️ Ecco una scheda di allenamento per la schiena:  
+        3 serie di rematore con manubri, 3 serie di lat machine, 3 serie di stacchi da terra.
 
   utter_scheda_addominali:
-    - text: "Ecco una scheda di allenamento per gli addominali: 3 serie di crunch, 3 serie di plank, 3 serie di leg raises."
+    - text: |
+        🤸‍♂️ Ecco una scheda di allenamento per gli addominali:  
+        3 serie di crunch, 3 serie di plank, 3 serie di leg raises.
+
+  utter_acknowledge_deny:
+    - text: "Va bene, se hai bisogno di altro in futuro, sono qui per aiutarti! 💪"
 
   utter_scheda_spalle:
-    - text: "Ecco una scheda di allenamento per le spalle: 3 serie di shoulder press, 3 serie di alzate laterali, 3 serie di alzate frontali."
+    - text: |
+        💪 Ecco una scheda di allenamento per le spalle:  
+        3 serie di shoulder press, 3 serie di alzate laterali, 3 serie di alzate frontali.
+
   # Richieste esercizi specifici
   utter_richiesta_esercizio_defaticante:
-    - text: "Ecco un esercizio defaticante: prova il rilassamento muscolare. Fai 5 minuti di respirazione profonda."
+    - text: |
+        🧘‍♂️ Ecco un esercizio defaticante:  
+        Prova il rilassamento muscolare con 5 minuti di respirazione profonda.
 
   utter_richiesta_esercizio_braccia:
-    - text: "Ecco un esercizio per le braccia: prova i curl con i manubri. Fai 3 serie da 12 ripetizioni."
-    - text: "Ecco un esercizio per le braccia: prova le estensioni tricipiti. Fai 3 serie da 10 ripetizioni."
-    - text: "Ecco un esercizio per le braccia: prova le flessioni. Fai 3 serie da 8 ripetizioni."
+    - text: |
+        💪 Ecco un esercizio per le braccia:  
+        - Curl con i manubri (3 serie da 12 ripetizioni)  
+        - Estensioni tricipiti (3 serie da 10 ripetizioni)  
+        - Flessioni (3 serie da 8 ripetizioni).
 
   utter_richiesta_esercizio_gambe:
-    - text: "Ecco un esercizio per le gambe: prova gli squat. Fai 3 serie da 10 ripetizioni."
-    - text: "Ecco un esercizio per le gambe: prova gli affondi. Fai 3 serie da 10 ripetizioni."
-    - text: "Ecco un esercizio per le gambe: prova la leg press. Fai 3 serie da 12 ripetizioni."
+    - text: |
+        🦵 Ecco un esercizio per le gambe:  
+        - Squat (3 serie da 10 ripetizioni)  
+        - Affondi (3 serie da 10 ripetizioni)  
+        - Leg press (3 serie da 12 ripetizioni).
 
   utter_richiesta_esercizio_schiena:
-    - text: "Ecco un esercizio per la schiena: prova il rematore con manubri. Fai 3 serie da 10 ripetizioni."
-    - text: "Ecco un esercizio per la schiena: prova le trazioni. Fai 3 serie da 8 ripetizioni."
-    - text: "Ecco un esercizio per la schiena: prova gli stacchi da terra. Fai 3 serie da 10 ripetizioni."
+    - text: |
+        🏋️‍♂️ Ecco un esercizio per la schiena:  
+        - Rematore con manubri (3 serie da 10 ripetizioni)  
+        - Trazioni (3 serie da 8 ripetizioni)  
+        - Stacchi da terra (3 serie da 10 ripetizioni).
 
   utter_richiesta_esercizio_petto:
-    - text: "Ecco un esercizio per il petto: prova la panca piana. Fai 3 serie da 10 ripetizioni."
-    - text: "Ecco un esercizio per il petto: prova la panca inclinata. Fai 3 serie da 10 ripetizioni."
-    - text: "Ecco un esercizio per il petto: prova le flessioni. Fai 3 serie da 8 ripetizioni."
+    - text: |
+        🏋️‍♂️ Ecco un esercizio per il petto:  
+        - Panca piana (3 serie da 10 ripetizioni)  
+        - Panca inclinata (3 serie da 10 ripetizioni)  
+        - Flessioni (3 serie da 8 ripetizioni).
 
   utter_ask_more_details:
     - text: "Vuoi sapere di più su esercizi specifici o consigli per il tuo piano? 💪"
 
   # Saluto finale
   utter_goodbye:
-    - text: "Grazie per avermi usato! A presto e buon allenamento! 💪 Ricorda di bere molta acqua e di riposare adeguatamente."
+    - text: |
+        Grazie per avermi usato! A presto e buon allenamento! 💪 
+        Ricorda di bere molta acqua e di riposare adeguatamente.  
+        ⚠️ **Disclaimer**: Le informazioni fornite da FitBot sono a scopo informativo e NON sostituiscono il parere di un medico o di un professionista qualificato. 
+        CONSULTA SEMPRE un esperto prima di iniziare un nuovo piano di allenamento o dieta.
 
 #Terminale ngrok:  C:\Users\kikop\Downloads\ngrok-v3-stable-windows-amd64> ngrok http 5005
 
@@ -160,6 +254,7 @@ slots:
         conditions:
           - active_loop: fitness_form
             requested_slot: fitness_goal
+
   experience_level:
     type: text
     mappings:
@@ -167,6 +262,7 @@ slots:
         conditions:
           - active_loop: fitness_form
             requested_slot: experience_level
+
   availability:
     type: text
     mappings:
@@ -199,6 +295,7 @@ actions:
   - action_reset_slots
   - action_handle_fallback
   - action_stop_bot
+  - utter_goodbye
 
 session_config:
   session_expiration_time: 60
