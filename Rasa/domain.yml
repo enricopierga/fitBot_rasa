@@ -1,7 +1,5 @@
 version: "3.1" # Versione del formato del file di dominio
-# Definizione degli intenti che il bot può riconoscere
 
-##TODO: Formattazioni (togli asterischi); inserisci se vuoi farmi altre domande dopo il completamento form
 intents:
   - start
   - greet # Intento per il saluto
@@ -74,7 +72,7 @@ responses:
         🎯 Pronto a iniziare? Dimmi cosa desideri fare, oppure prova: "Piano personalizzato per un allenamento su misura! 💪✨
 
   utter_ask_fitness_goal:
-    - text: "🏋️ Qual è il tuo obiettivo fitness? 💪\n✨ Puoi scegliere tra:\n- Perdere peso 🏃\n- Aumentare la massa muscolare 💪\n- Migliorare il tono fisico ⚡"
+    - text: "🏋️ Qual è il tuo obiettivo fitness? 💪\n✨ Puoi scegliere tra:\n🏃 Perdere peso\n💪 Aumentare la massa muscolare\n⚡ Migliorare il tono fisico "
 
   utter_ask_experience_level:
     - text: "🧐 Qual è il tuo livello di esperienza con l'allenamento? 🏋️‍♂️\n🌱 Principiante\n🌟 Intermedio\n🔥 Avanzato"
@@ -231,10 +229,8 @@ responses:
     - text: |
         Grazie per avermi usato! A presto e buon allenamento! 💪 
         Ricorda di bere molta acqua e di riposare adeguatamente.  
-        ⚠️ **Disclaimer**: Le informazioni fornite da FitBot sono a scopo informativo e NON sostituiscono il parere di un medico o di un professionista qualificato. 
-        CONSULTA SEMPRE un esperto prima di iniziare un nuovo piano di allenamento o dieta.
-
-#Terminale ngrok:  C:\Users\kikop\Downloads\ngrok-v3-stable-windows-amd64> ngrok http 5005
+        ⚠️⚠️ Disclaimer: Le informazioni fornite da FitBot sono a scopo informativo e NON sostituiscono il parere di un medico o di un professionista qualificato. 
+        CONSULTA SEMPRE un esperto prima di iniziare un nuovo piano di allenamento o dieta! ⚠️⚠️
 
 # Slot
 slots:

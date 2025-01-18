@@ -222,58 +222,58 @@ class ActionProvideExercises(Action):
         if fitness_goal == "perdere peso":
             if experience_level == "principiante":
                 exercises = """
-                💪 **Cardio leggero**: Camminata veloce (20-30 minuti al giorno). Mantieni una velocità che ti permette di parlare ma non di cantare.
-                🏋️‍♀️ **Esercizi a corpo libero**:
+                💪 Cardio leggero: Camminata veloce (20-30 minuti al giorno). Mantieni una velocità che ti permette di parlare ma non di cantare.
+                🏋️‍♀️ Esercizi a corpo libero:
                   🔹 Squat (3 serie da 12-15 ripetizioni): Mantieni i talloni a terra e abbassati fino a quando le cosce sono parallele al pavimento.
                   🔹 Affondi (3 serie per gamba): Fai un passo avanti e abbassa il corpo fino a creare un angolo di 90 gradi con entrambe le gambe.
                   🔹 Mountain climbers (3 serie da 20 secondi): Porta le ginocchia al petto alternandole rapidamente.
-                🌟 **Consiglio**: Focalizzati sulla costanza, non sull'intensità. Aumenta gradualmente la durata e aggiungi piccoli pesi alle caviglie per intensificare.
+                🌟 Consiglio: Focalizzati sulla costanza, non sull'intensità. Aumenta gradualmente la durata e aggiungi piccoli pesi alle caviglie per intensificare.
                 """
             elif experience_level == "intermedio":
                 exercises = """
-                🏃‍♀️ **Cardio moderato**:
+                🏃‍♀️ Cardio moderato:
                   🔹 Corsa leggera o cyclette (30-40 minuti): Includi 1 minuto di corsa veloce ogni 5 minuti per aumentare la combustione calorica.
-                🤸‍♀️ **Esercizi combinati**:
+                🤸‍♀️ Esercizi combinati:
                   🔹 Burpees (3 serie da 12): Salta verso l'alto, scendi in posizione di plank e torna in piedi.
                   🔹 Plank dinamico (3 serie da 20 secondi): Alterna il sollevamento delle braccia durante il plank.
                   🔹 Squat con salto (3 serie da 12): Esegui un normale squat, ma aggiungi un salto esplosivo verso l'alto.
-                🚀 **Consiglio**: Integra un allenamento HIIT (High Intensity Interval Training) di 20 minuti per massimizzare la perdita di peso.
+                🚀 Consiglio: Integra un allenamento HIIT (High Intensity Interval Training) di 20 minuti per massimizzare la perdita di peso.
                 """
             elif experience_level == "avanzato":
                 exercises = """
-                🏋️‍♂️ **Cardio intenso**:
+                🏋️‍♂️ Cardio intenso:
                   🔹 Interval training: 1 minuto di sprint seguito da 2 minuti di corsa lenta, ripetuto per 20-30 minuti.
-                🏋️‍♀️ **Esercizi di resistenza**:
+                🏋️‍♀️ Esercizi di resistenza:
                   🔹 Deadlift (3 serie da 8): Solleva il bilanciere mantenendo la schiena dritta.
                   🔹 Kettlebell swings (3 serie da 15): Solleva il kettlebell con un movimento esplosivo dalle anche.
                   🔹 Push-up esplosivi (3 serie da 12): Salta con le mani dal pavimento in ogni ripetizione.
-                💥 **Consiglio**: Combina pesistica e cardio in circuiti ad alta intensità, includendo poco tempo di recupero tra le serie.
+                💥 Consiglio: Combina pesistica e cardio in circuiti ad alta intensità, includendo poco tempo di recupero tra le serie.
                 """
         
         elif fitness_goal == "aumentare la massa muscolare":
             if experience_level == "principiante":
                 exercises = """
-                🏋️‍♀️ **Pesistica base**:
+                🏋️‍♀️ Pesistica base:
                   🔹 Squat con manubri (3 serie da 10): Usa pesi leggeri per abituarti al movimento.
                   🔹 Panca piana con manubri (3 serie da 8-10): Solleva i manubri sopra il petto con controllo.
                   🔹 Rematore con bilanciere (3 serie da 8-10): Tieni la schiena dritta mentre tiri il bilanciere verso l'addome.
-                🔧 **Esercizi complementari**:
+                🔧 Esercizi complementari:
                   🔹 Sollevamento laterale per le spalle (3 serie da 12): Usa manubri leggeri per allenare i deltoidi.
                   🔹 Curl per bicipiti (3 serie da 12): Solleva i manubri verso le spalle lentamente.
-                🏆 **Consiglio**: Concentrati sulla tecnica e aumenta progressivamente il carico ogni 2 settimane.
+                🏆 Consiglio: Concentrati sulla tecnica e aumenta progressivamente il carico ogni 2 settimane.
                 """
             elif experience_level == "intermedio":
                 exercises = """
-                🏋️‍♂️ **Split routine**:
+                🏋️‍♂️ Split routine:
                   🔹 Allenamenti alternati per petto/tricipiti, schiena/bicipiti, gambe/spalle.
                 🔹 Bench press (3 serie da 6-8): Usa il bilanciere e mantieni i gomiti a 90 gradi.
                 🔹 Squat profondo (3 serie da 10-12): Scendi il più possibile senza perdere la postura corretta.
                 🔹 Deadlift (3 serie da 8): Mantieni il carico vicino al corpo durante il movimento.
-                💪 **Consiglio**: Aumenta progressivamente il carico e integra superserie per intensità.
+                💪 Consiglio: Aumenta progressivamente il carico e integra superserie per intensità.
                 """
             elif experience_level == "avanzato":
                 exercises = """
-                💥 **Programma avanzato**:
+                💥 Programma avanzato:
                   🔹 Allenamenti giornalieri mirati a gruppi muscolari specifici (es. push-pull-legs).
                 🔹 Stacco da terra (4 serie da 5): Usa un peso elevato e lavora sulla forza.
                 🔹 Military press (3 serie da 6-8): Solleva il bilanciere sopra la testa mantenendo una posizione stabile.
@@ -284,7 +284,7 @@ class ActionProvideExercises(Action):
         elif fitness_goal == "migliorare il tono fisico":
             if experience_level == "principiante":
                 exercises = """
-                🏋️‍♀️ **Resistenza leggera**:
+                🏋️‍♀️ Resistenza leggera:
                   🔹 Elastici per glutei (3 serie da 15): Usa bande elastiche per resistenza.
                   🔹 Affondi laterali (3 serie da 12 per gamba): Alterna i lati per migliorare l'equilibrio.
                   🔹 Crunch (3 serie da 15): Solleva le spalle verso le ginocchia.
@@ -293,14 +293,14 @@ class ActionProvideExercises(Action):
                 """
             elif experience_level == "intermedio":
                 exercises = """
-                🤸‍♀️ **Allenamento funzionale**:
+                🤸‍♀️ Allenamento funzionale:
                   🔹 Kettlebell swing (3 serie da 15): Usa un movimento esplosivo per sollevare il kettlebell.
                   🔹 Push-up con variazioni (3 serie da 10-12): Alterna push-up classici e diamantati.
                   🔹 Squat con salto (3 serie da 12): Aggiungi esplosività ai movimenti.
                 """
             elif experience_level == "avanzato":
                 exercises = """
-                🏋️‍♀️ **Functional training avanzato**:
+                🏋️‍♀️ Functional training avanzato:
                   🔹 TRX (3 serie da 12): Usa il TRX per esercizi come pull-up e squat.
                   🔹 Box jump (3 serie da 10): Salta su una scatola o un gradino alto.
                   🔹 Hollow hold (3 serie da 30 secondi): Mantieni la posizione in isometria.
